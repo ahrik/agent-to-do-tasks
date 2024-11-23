@@ -1,5 +1,6 @@
-import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
+import tsParser from '@typescript-eslint/parser';
+import importPlugin from 'eslint-plugin-import';
 import jestPlugin from 'eslint-plugin-jest';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
@@ -8,21 +9,11 @@ import eslintReact from 'eslint-plugin-react';
 import eslintReactHooks from 'eslint-plugin-react-hooks';
 import eslintReactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
-import tsEslint from 'typescript-eslint';
 import globals from 'globals';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import tsParser from '@typescript-eslint/parser';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+import tsEslint from 'typescript-eslint';
 
 /**@type {import('eslint').Linter.Config[]}*/
 export default tsEslint.config(
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
   js.configs.recommended,
   ...tsEslint.configs.recommended,
 
@@ -37,6 +28,7 @@ export default tsEslint.config(
       'jsx-a11y': jsxA11yPlugin,
       jsdoc: jsdocPlugin,
       'simple-import-sort': simpleImportSort,
+      import: importPlugin,
     },
   },
 

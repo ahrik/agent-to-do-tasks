@@ -1,0 +1,12 @@
+@use "@/shared/styles/mixins" as *;
+
+.publicLayout {
+  @include full-layout();
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background-color: var(--bg-color);
+  display: grid;
+  place-items: center;
+}

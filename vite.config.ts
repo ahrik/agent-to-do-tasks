@@ -1,15 +1,24 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'path';
-import eslint from 'vite-plugin-eslint2';
+import { defineConfig } from 'vite';
+
+const getPath = (relativePath: string) => path.resolve(__dirname, relativePath);
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), eslint()],
+  plugins: [react()],
 
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': getPath('./src'),
+      '@public': getPath('./public'),
+      '@styles': getPath('./src/shared/styles'),
+
+      '@pages': getPath('./src/pages'),
+      '@widgets': getPath('./src/widgets'),
+      '@features': getPath('./src/features'),
+      '@entities': getPath('./src/entities'),
+      '@shared': getPath('./src/shared'),
     },
   },
 

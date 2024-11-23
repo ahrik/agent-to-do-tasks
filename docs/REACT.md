@@ -49,10 +49,7 @@ const Card: React.FC<CardProps> = ({ header, footer, children }) => {
 };
 
 const App = () => (
-  <Card
-    header={<h1>Заголовок</h1>}
-    footer={<button>Кнопка</button>}
-  >
+  <Card header={<h1>Заголовок</h1>} footer={<button>Кнопка</button>}>
     <p>Описание</p>
   </Card>
 );
@@ -61,35 +58,35 @@ const App = () => (
 3. **Использование объекта для передачи слотов**
    Это позволяет передавать все слоты через объект, улучшая читаемость кода.
 
-    ```tsx
-    type CardProps = {
-        slots: {
-            header?: React.ReactNode;
-            body?: React.ReactNode;
-            footer?: React.ReactNode;
-        };
-    };
+   ```tsx
+   type CardProps = {
+     slots: {
+       header?: React.ReactNode;
+       body?: React.ReactNode;
+       footer?: React.ReactNode;
+     };
+   };
 
-    const Card: React.FC<CardProps> = ({ slots }) => {
-        return (
-            <div className="card">
-                {slots.header && <div className="card-header">{slots.header}</div>}
-                {slots.body && <div className="card-body">{slots.body}</div>}
-                {slots.footer && <div className="card-footer">{slots.footer}</div>}
-            </div>
-        );
-    };
+   const Card: React.FC<CardProps> = ({ slots }) => {
+     return (
+       <div className="card">
+         {slots.header && <div className="card-header">{slots.header}</div>}
+         {slots.body && <div className="card-body">{slots.body}</div>}
+         {slots.footer && <div className="card-footer">{slots.footer}</div>}
+       </div>
+     );
+   };
 
-    const App = () => (
-        <Card
-            slots={{
-                header: <h1>Заголовок</h1>,
-                body: <p>Описание</p>,
-                footer: <button>Кнопка</button>,
-            }}
-        />
-    );
-    ```
+   const App = () => (
+     <Card
+       slots={{
+         header: <h1>Заголовок</h1>,
+         body: <p>Описание</p>,
+         footer: <button>Кнопка</button>,
+       }}
+     />
+   );
+   ```
 
 4. **Рендер-функции (Render Props)**
    Используются, если требуется передать логику вместе с контентом.
@@ -110,12 +107,7 @@ const Card: React.FC<CardProps> = ({ renderHeader, renderFooter }) => {
   );
 };
 
-const App = () => (
-  <Card
-    renderHeader={() => <h1>Заголовок</h1>}
-    renderFooter={() => <button>Кнопка</button>}
-  />
-);
+const App = () => <Card renderHeader={() => <h1>Заголовок</h1>} renderFooter={() => <button>Кнопка</button>} />;
 ```
 
 5. **Контекст для гибкости**

@@ -1,0 +1,7 @@
+@use "@/shared/styles/mixins" as *;
+
+.appLayout {
+  @include full-layout();
+
+  overflow: hidden;
+}

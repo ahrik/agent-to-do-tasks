@@ -16,4 +16,7 @@
   --text-color: #171717;
 
   --bg-color: #ffffff;
+
+  /*Constants*/
+  --border-radius: 12px;
 }

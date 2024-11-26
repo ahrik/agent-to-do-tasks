@@ -1,0 +1,5 @@
+@use "@/shared/styles/mixins";
+
+.protectedLayout {
+  @include mixins.full-layout();
+}

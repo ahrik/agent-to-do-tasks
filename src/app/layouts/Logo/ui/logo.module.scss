@@ -1,0 +1,19 @@
+.logo {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.5rem;
+
+  &--hided-text {
+    align-items: center;
+  }
+
+  &__icon {
+    color: var(--brand-color);
+    height: 40px;
+    width: 40px;
+  }
+
+  &__text {
+    font-size: 1.7rem;
+  }
+}

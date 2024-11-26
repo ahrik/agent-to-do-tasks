@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { ForbiddenPage } from '@pages/ForbiddenPage';
-import { NotFoundPage } from '@pages/NotFoundPage';
+import { ForbiddenPage } from '@pages/Forbidden.page';
+import { NotFoundPage } from '@pages/NotFound.page';
 import { SignInPageLazy } from '@pages/sign-in';
 import { StatisticsPageLazy } from '@pages/statistics';
 import { TasksPageLazy } from '@pages/tasks';

@@ -1,7 +1,9 @@
 import { ReactNode, useEffect, useState } from 'react';
+import { redirect } from 'react-router-dom';
+import { ROUTERS } from '@shared/constants';
 import { Spinner } from '@shared/ui/Spinner';
 import { useSession } from '@/entities/session';
-import { useAppInterceptor } from '../app-interceptor';
+import { useAppInterceptor } from '../useAppInterceptor';
 
 export function AppLoader({ children }: { children?: ReactNode }) {
   const loadSession = useSession(s => s.loadSession);
@@ -16,12 +18,15 @@ export function AppLoader({ children }: { children?: ReactNode }) {
       .finally(() => {
         setIsLoading(false);
       })
-      .catch(() => {});
+      .catch((error: Error | unknown) => {
+        console.error(error);
+        redirect(ROUTERS.SIGN_IN);
+      });
   }, [loadSession]);
 
   return (
     <>
-      {isLoading && <Spinner />}
+      {isLoading && <Spinner isFullScreen />}
       {isLoading ? null : children}
     </>
   );

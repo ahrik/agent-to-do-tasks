@@ -6,6 +6,7 @@
  * OpenAPI spec version: 1.0.0
  */
 import { createInstance } from './api-instance';
+import type { BodyType } from './api-instance';
 export type SuccessResponseData = { [key: string]: unknown };
 
 export type SuccessResponse = {
@@ -71,7 +72,7 @@ export const getSession = (options?: SecondParameter<typeof createInstance>) => 
 
  * @summary Sign in
  */
-export const signIn = (signIn: SignIn, options?: SecondParameter<typeof createInstance>) => {
+export const signIn = (signIn: BodyType<SignIn>, options?: SecondParameter<typeof createInstance>) => {
   return createInstance<Session>(
     { url: `/session/sign-in`, method: 'POST', headers: { 'Content-Type': 'application/json' }, data: signIn },
     options

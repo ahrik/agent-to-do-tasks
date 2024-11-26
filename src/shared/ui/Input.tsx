@@ -4,9 +4,11 @@ import { Input as AntdInput, InputProps as AntdInputProps, InputRef } from 'antd
 export type InputProps = AntdInputProps & PropsWithChildren;
 
 export const Input = forwardRef<InputRef, InputProps>(({ children, ...restProps }: InputProps, ref) => {
+  const TypedInput = restProps.type === 'password' ? AntdInput.Password : AntdInput;
+
   return (
-    <AntdInput ref={ref} {...restProps}>
+    <TypedInput ref={ref} {...restProps}>
       {children}
-    </AntdInput>
+    </TypedInput>
   );
 });

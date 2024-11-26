@@ -14,6 +14,7 @@ export const persistStorage = {
       return Promise.resolve(null);
     }
   },
+
   getItem: <T,>(key: string) => {
     return getItem<T>(key);
   },

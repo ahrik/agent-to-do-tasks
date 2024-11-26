@@ -2,11 +2,13 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { Flex, Spin, SpinProps } from 'antd';
 
 const fullStyle = {
-  position: 'absolute',
-  width: '100%',
+  display: 'grid',
   height: '100%',
-  top: 0,
   left: 0,
+  placeItems: 'center',
+  position: 'absolute',
+  top: 0,
+  width: '100%',
 };
 
 type Props = SpinProps & {

@@ -1,1 +1,1 @@
-export { ProtectedLayout } from './ui/protected-layout';
+export { ProtectedLayout } from './ui/ProtectedLayout';

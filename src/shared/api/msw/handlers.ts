@@ -32,13 +32,13 @@ const ok = async (body?: unknown) => {
 
 export const getHandlers = async () => {
   const users = await usersRepository.getUsers();
+
   if (users.length === 0) {
     await usersRepository.addUser({
       name: 'Администрюк',
       email: 'admin@gmail.com',
       password: 'admin',
       role: 'admin',
-      avatarId: '1',
     });
   }
 

@@ -8,6 +8,7 @@ export const sessionRepository = {
   getSession: () => {
     return persistStorage.getItemSafe<Session | undefined>(SESSION_STORAGE_KEY, undefined);
   },
+
   signIn: async (value: SignIn) => {
     const users = await usersRepository.getUsers();
 
@@ -30,6 +31,7 @@ export const sessionRepository = {
 
     return persistStorage.setItemSafe(SESSION_STORAGE_KEY, session);
   },
+
   signOut: () => {
     return persistStorage.setItemSafe(SESSION_STORAGE_KEY, undefined);
   },

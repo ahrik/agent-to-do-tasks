@@ -4,12 +4,12 @@ import { useSession } from '@entities/session';
 import { api } from '@shared/api';
 import { ROUTERS } from '@shared/constants';
 import { useI18n } from '@shared/i18n';
-import { useToasts } from '@shared/ui/toasts';
+import { useToast } from '@shared/lib/toasts';
 import { SignIn } from '../types';
 
 export const useSignIn = () => {
   const navigate = useNavigate();
-  const { successNotification } = useToasts();
+  const { addSuccessToast } = useToast();
   const { t } = useI18n();
   const setCurrentSession = useSession(({ setCurrentSession }) => setCurrentSession);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +21,7 @@ export const useSignIn = () => {
       .signIn(signInParams)
       .then(session => {
         setCurrentSession(session);
-        successNotification({ message: t('sign-in') });
+        addSuccessToast(t('sign-in'));
         navigate(ROUTERS.ROOT);
 
         return session;

@@ -1,1 +1,1 @@
-export { PublicLayout } from './ui/PublicLayout.tsx';
+export { PublicLayout } from './ui/PublicLayout';

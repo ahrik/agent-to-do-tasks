@@ -1,0 +1,20 @@
+import { API_BASE_URL } from '@shared/constants';
+import axios, { AxiosError, AxiosRequestConfig } from 'axios';
+
+export const apiInstance = axios.create({
+  baseURL: API_BASE_URL,
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+export const createInstance = <T>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
+  return apiInstance({
+    ...config,
+    ...options,
+  }).then(r => r.data);
+};
+
+export type ResponseBodyType<Data> = Data;
+export type ResponseErrorType<Error> = AxiosError<Error>;

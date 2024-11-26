@@ -83,6 +83,6 @@ export default tsEslint.config(
   },
 
   {
-    ignores: ['node_modules', 'dist', '.editorconfig'],
+    ignores: ['node_modules', 'dist', '.editorconfig', 'src/shared/api/generated_api.ts'],
   }
 );

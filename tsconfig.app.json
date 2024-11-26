@@ -9,7 +9,7 @@
 
     /* Bundler mode */
     "moduleResolution": "Bundler",
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
@@ -35,5 +35,5 @@
     }
   },
   "include": ["src"],
-  "exclude": [".editorconfig", "docs"]
+  "exclude": [".editorconfig", "docs", "src/shared/api/generated_api.ts"]
 }

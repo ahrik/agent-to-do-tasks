@@ -1,30 +1,36 @@
-import { createBrowserRouter, redirect } from 'react-router-dom';
-import { ForbiddenPage } from '@pages/ForbiddenPage.tsx';
-import { SignInPage } from '@pages/sign-in';
-import { TasksPage } from '@pages/tasks';
-import { ROUTERS } from '@shared/constants/routes';
+import { createBrowserRouter } from 'react-router-dom';
+import { ForbiddenPage } from '@pages/ForbiddenPage';
+import { NotFoundPage } from '@pages/NotFoundPage';
+import { SignInPageLazy } from '@pages/sign-in';
+import { StatisticsPageLazy } from '@pages/statistics';
+import { TasksPageLazy } from '@pages/tasks';
+import { ROUTERS } from '@shared/constants';
+import { AppLoader } from '@/app/loaders/AppLoader';
 import { AppLayout } from './layouts/app-layout';
 import { ProtectedLayout } from './layouts/protected-layout';
 import { PublicLayout } from './layouts/public-layout';
-import { AntProvider } from './providers/ant-provider';
 import { AppProvider } from './providers/AppProvider';
 
 export const router = createBrowserRouter([
   {
     element: (
-      <AntProvider>
+      <AppLoader>
         <AppProvider>
           <AppLayout />
         </AppProvider>
-      </AntProvider>
+      </AppLoader>
     ),
     children: [
       {
         element: <ProtectedLayout />,
         children: [
           {
+            path: ROUTERS.ROOT,
+            element: <StatisticsPageLazy />,
+          },
+          {
             path: ROUTERS.TASKS,
-            element: <TasksPage />,
+            element: <TasksPageLazy />,
           },
         ],
       },
@@ -33,7 +39,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: ROUTERS.SIGN_IN,
-            element: <SignInPage />,
+            element: <SignInPageLazy />,
           },
         ],
       },
@@ -42,6 +48,6 @@ export const router = createBrowserRouter([
   { path: ROUTERS.FORBIDDEN, element: <ForbiddenPage /> },
   {
     path: '*',
-    loader: () => redirect(ROUTERS.ROOT),
+    element: <NotFoundPage />,
   },
 ]);

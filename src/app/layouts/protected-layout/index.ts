@@ -1,1 +1,1 @@
-export { ProtectedLayout } from './ui/protected-layout.tsx';
+export { ProtectedLayout } from './ui/protected-layout';

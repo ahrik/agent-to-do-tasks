@@ -1,4 +1,4 @@
-<img width="100" src="./src/assets/linki_logo.svg" />
+<img width="100" src="./public/taskly.svg" />
 
 # Taskly
 Тестовый проект для того что бы показать как можно создать проект на [FSD](https://feature-sliced.design/) технологии

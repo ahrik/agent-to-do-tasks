@@ -1,50 +1,57 @@
-# React + TypeScript + Zustand + Antd + Vite
+<img width="100" src="./src/assets/linki_logo.svg" />
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Taskly
+Тестовый проект для того что бы показать как можно создать проект на [FSD](https://feature-sliced.design/) технологии
 
-Currently, two official plugins are available:
+#### Стек технологии:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [React](https://react.dev/learn) + [Typescript](https://www.typescriptlang.org/docs/)
+- [Zustand](https://docs.pmnd.rs/zustand/getting-started/introduction) - a small, fast, and scalable bearbones state management solution
+- [Ant.design](https://ant.design/) - как готовые UI компоненты
+- [React Hook Form](https://react-hook-form.com/) - performant, flexible and extensible forms with easy-to-use validation.
+- [Zod](https://zod.dev/) - Проверка схемы на основе TypeScript-first со статическим выводом типа
+- [Vite](https://vitejs.dev/guide/) - быстрый сборщих
 
-## Expanding the ESLint configuration
+## Основные требования к проекту
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+> [!NOTE]
+> Версия Node v20\*
 
-- Configure the top-level `parserOptions` property like this:
+## For Developers
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+```shell
+npm i && npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+запустить проект по адресу [localhost:3000](http://localhost:3000)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+> [!CAUTION]
+> Обязательно запустить команду
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
+```shell
+npm run prepare
 ```
+
+[env.example](env.example) переименовать на .env посли если параметр VITE_USE_MSW=true,
+тогда можно будет тестировать локально.
+
+для локально тестирование логин и пароль
+
+```aiignore
+email: admin@gmail.com
+password: admin
+```
+
+## For DevOps
+
+Сборщик [ViteJS](https://vitejs.dev/). По развертки на проде можно почитать тут [Deploying ViteJS](https://vitejs.dev/guide/static-deploy.html#building-the-app)
+
+### Для запуска проекта в production окружение запускаем команду:
+
+```shell
+npm i
+npm run build
+```
+
+> [!NOTE]
+> В корне проекта создается папка dist это и есть исходник фронта Админки, надо что бы запускался index.html

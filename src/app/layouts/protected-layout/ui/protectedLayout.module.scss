@@ -2,4 +2,13 @@
 
 .protectedLayout {
   @include mixins.full-layout();
+
+  &__header {
+    height: 60px;
+  }
+
+  &__content {
+    margin: 0 auto;
+    width: var(--container-max-width);
+  }
 }

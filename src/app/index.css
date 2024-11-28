@@ -19,4 +19,5 @@
 
   /*Constants*/
   --border-radius: 12px;
+  --container-max-width: 1280px;
 }

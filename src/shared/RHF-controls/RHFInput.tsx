@@ -17,7 +17,7 @@ export const RHFInput = (props: RHFTextFieldProps) => {
       name={name}
       control={control}
       render={({ field: { ref, value, onChange, ...restOfFieldProps }, fieldState: { error } }) => (
-        <Form.Item label={label}>
+        <Form.Item label={label} validateStatus={error && ''}>
           <Input
             value={value}
             ref={ref}

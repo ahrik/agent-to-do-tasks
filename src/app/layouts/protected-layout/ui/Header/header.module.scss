@@ -1,0 +1,22 @@
+.header {
+  align-items: center;
+  background-color: #fff;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr auto;
+  height: 100%;
+  justify-content: center;
+
+  &__wrapper {
+    margin: 0 auto;
+    width: var(--container-max-width);
+  }
+
+  &__logo {
+
+  }
+
+  &__actions {
+
+  }
+}

@@ -1,4 +1,4 @@
-<img width="100" src="./public/taskly.svg" />
+<img width="100" alt="logo" src="./public/taskly.svg" />
 
 # Taskly
 Тестовый проект для того что бы показать как можно создать проект на [FSD](https://feature-sliced.design/) технологии
@@ -27,10 +27,9 @@ npm i && npm run dev
 
 > [!CAUTION]
 > Обязательно запустить команду
-
-```shell
-npm run prepare
-```
+>```shell
+>npm run prepare
+>```
 
 [env.example](env.example) переименовать на .env посли если параметр VITE_USE_MSW=true,
 тогда можно будет тестировать локально.
@@ -49,9 +48,8 @@ password: admin
 ### Для запуска проекта в production окружение запускаем команду:
 
 ```shell
-npm i
-npm run build
+npm i && npm run build
 ```
 
 > [!NOTE]
-> В корне проекта создается папка dist это и есть исходник фронта Админки, надо что бы запускался index.html
+> В корне проекта создается папка dist это и есть исходник фронта, надо что бы запускался index.html

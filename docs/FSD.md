@@ -1,69 +1,70 @@
 # FSD (Feature-Sliced Design)
 
-Архитектурная методология для фронтенд проектов
+Архитектурная методология для организации фронтенд-проектов.
 
 [![FSD Link](https://img.shields.io/badge/Link-FSD-2b74d4)](https://feature-sliced.design/ru/)
 
-> Тут ключевое слово методология, что дает нам больше конкретики чем абстрактную архитектуру,
-> типа чиста архитектура, DRY, KiSS, SOLID и ...
-> Но прежде чем начать изучать далее эту методологию стоит повторить вот что:
+Что такое FSD?
+
+FSD (Feature-Sliced Design) — это методология для структурирования фронтенд-приложений, которая акцентирует внимание на делении приложения на независимые слои и модули. Она помогает организовать код так, чтобы упростить разработку, тестирование и сопровождение проекта.
+
+Основная цель FSD — обеспечить четкую изоляцию бизнес-логики, компонентов, страниц и других сущностей. Это позволяет улучшить масштабируемость и снизить связанность между модулями.
+
+Перед изучением FSD рекомендуется освежить основные архитектурные принципы и подходы:
 >
-> - [DRY (Don't Repeat Yourself)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
-> - [KISS (Keep It Simple, Stupid)](https://en.wikipedia.org/wiki/KISS_principle)
-> - [SOLID](https://en.wikipedia.org/wiki/SOLID)
+> - [DRY (Don't Repeat Yourself)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) — не дублируйте код, стремитесь к переиспользованию.
+> - [KISS (Keep It Simple, Stupid)](https://en.wikipedia.org/wiki/KISS_principle) — делайте простые и понятные решения.
+> - [SOLID](https://en.wikipedia.org/wiki/SOLID) — набор принципов для проектирования архитектуры.
 >   - S — Single Responsibility Principle
 >   - O — Open/Closed Principle - используем в основном в Shared layer
 >   - L — Liskov Substitution Principle
 >   - I — Interface Segregation Principle
 >   - D — [Dependency Inversion Principle](https://medium.com/@ruben.alapont/solid-principles-series-the-dependency-inversion-principle-dip-in-typescript-424a9cb0820e) - это в FSD используется хорошо и надо понять как с этим работать в коде
-> - [DDD (Domain-Driven Design)](https://en.wikipedia.org/wiki/Domain-driven_design) - feature слои мы должны этот принцип соблюдать
-> - [YAGNI (You Aren’t Gonna Need It)](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it)
-> - [GRASP (General Responsibility Assignment Software Patterns)](<https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)>) - Low coupling поддерживается в FSD активно.
-> - [CQS (Command Query Separation)](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation)
-> - [OOP (Объектно-ориентированное программирование)](https://www.typescriptlang.org/docs/handbook/classes.html) - парадигма программирования нужно понять и уметь писать в этом стили, потому что код пишем в Typescript
+> - [DDD (Domain-Driven Design)](https://en.wikipedia.org/wiki/Domain-driven_design) — концепция проектирования на основе бизнес-доменов, активно применяется в feature-слоях.
+> - [YAGNI (You Aren’t Gonna Need It)](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it) — избегайте избыточных функций, которые сейчас не нужны.
+> - [GRASP (General Responsibility Assignment Software Patterns)](<https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)>) — придерживайтесь низкой связанности между модулями (Low Coupling).
+> - [CQS (Command Query Separation)](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation) — разделяйте команды и запросы.
+> - [OOP (Объектно-ориентированное программирование)](https://www.typescriptlang.org/docs/handbook/classes.html) — понимание объектно-ориентированного подхода важно для работы с TypeScript.
 
-## Shared
+## Основные слои методологии
 
-- Модули должны быть стабильными (тут постараться реализовать Open/Close из SOLID)
-- Можно кросс импорты
-- не должно содержать бизнес логику
-- Можно определить интерфейсы и контексты что реализуется выше слоями
-- Избегаем инверсию зависимости
+### Shared
 
-## Entities
+- Стабильные модули, которые редко меняются.
+- Можно использовать кросс-импорты.
+- Не должны содержать бизнес-логику.
+- Содержат интерфейсы и контексты, реализуемые в верхних слоях.
+- Следует избегать инверсии зависимости.
 
-- Первую очередь надо понять, это абстрактный слой бизнеса
-- Кросс импорт на этом слои нельзя
-- Связь реализовать на верхнем уровне
-- Определить тут store
-- Лучше реализовать фабрики (Factory) чем Singleton
-- Активно использовать [слоты](https://habr.com/ru/articles/518500/) и [render props](https://react.dev/reference/react/Children#calling-a-render-prop-to-customize-rendering)
+### Entities
 
-## Features
+- Представляют абстрактный слой бизнес-логики.
+- Кросс-импорты на этом уровне запрещены.
+- Связь между модулями осуществляется на верхнем уровне.
+- Хранят состояния (store).
+- Лучше использовать фабрики (Factory), избегая Singleton.
+- Рекомендуется активно применять [слоты](https://habr.com/ru/articles/518500/) и [render props](https://react.dev/reference/react/Children#calling-a-render-prop-to-customize-rendering).
 
-- Реализуем именно бизнес фичу, что бы не получить [high cohesion](<https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)#High_cohesion>)
-- Нельзя импортировать друг друга (иногда лучше копипаста чем связанность фичи что убирает связанность)
-- Реализуется use cases
-- Действие над приложением в терминах бизнеса (например, как называем пользователя: user, employee, student ...)
-- Реализовать ["Кричащая архитектура"](https://habr.com/ru/articles/747210/)
-- Отображения реализуются в каждом use case (формы, кнопки (бизнесовая логика у этой кнопки), модалки)
-- Группируем похожие фичи в папку. Например: auth/sign-in, auth/sign-out
+### Features
 
-## Widgets / Pages
+- Реализуют конкретные бизнес-фичи, сохраняя высокий уровень связности [high cohesion](<https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)#High_cohesion>)
+- Нельзя импортировать фичи друг в друга.
+- Ориентированы на реализацию сценариев использования (use cases).
+- Определяют действия приложения в терминах бизнеса (например, user, employee, student).
+- Структурируются с использованием ["Кричащая архитектура"](https://habr.com/ru/articles/747210/)
+- Отображения (формы, кнопки, модалки) реализуются внутри конкретных сценариев.
+- Группируются в папки по схожим фичам, например: auth/sign-in, auth/sign-out.
 
-- Widget и Page по сути почти одинаковые, но если мы без изменения можем использовать widget в нескольких страницах, тогда создаем widget
-- Слои отображение, комбенируем тут отображения и логику из слоев ниже
-- Плоская структура
-- Кросс импорт на этом слои нельзя
-- Может содержать логики отображения
-- Реализовать ["Кричащая архитектура"](https://habr.com/ru/articles/747210/)
-- НЕ должно содержать бизнес логику
-- НЕстабильные модули (часто меняются и по этому бизнес логику и другие моменты которые описали выше не должно содержаться тут)
+### Widgets / Pages
+- Widgets и Pages схожи, но widgets должны быть переиспользуемыми.
+- Это слой отображения, который объединяет логику и интерфейс из нижних слоев.
+- Имеет плоскую структуру.
+- Кросс-импорты на этом уровне запрещены.
+- Может содержать логику отображения, но не бизнес-логику.
+- Часто меняются, поэтому бизнес-логику нужно исключить.
 
-## App
-
-- Запускает наш app
-- Глобальная композиция и логика
-- Не импортируется ниоткуда
-- Меняется очень часто
-- Глобальные данные компонуем и реализуем тут, а ниже по слоям описываем и определяем
+### App
+- Содержит глобальную композицию и логику приложения.
+- Не импортируется из других слоев.
+- Часто изменяемый слой.
+- Глобальные данные описываются и компонуются здесь, а дальше передаются в нижние слои.

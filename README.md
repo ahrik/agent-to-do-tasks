@@ -23,7 +23,7 @@
 npm i && npm run dev
 ```
 
-запустить проект по адресу [localhost:3000](http://localhost:3000)
+запустить проект по адресу [localhost:4000](http://localhost:4000)
 
 > [!CAUTION]
 > Обязательно запустить команду

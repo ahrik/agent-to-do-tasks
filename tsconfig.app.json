@@ -36,6 +36,6 @@
       "@shared/*": ["./src/shared/*"]
     }
   },
-  "include": ["src"],
-  "exclude": [".editorconfig", "docs", "src/shared/api/generated_api.ts"]
+  "include": ["src", "types"],
+  "exclude": [".editorconfig", "docs", "src/shared/api/generated_api.ts", "**/*.spec.ts"]
 }

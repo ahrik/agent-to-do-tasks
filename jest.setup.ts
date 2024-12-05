@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom'; // Расширяет expect с новыми матчерами
+import '@testing-library/jest-dom';
 
 import { configure } from '@testing-library/react';
 

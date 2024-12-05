@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import { I18nContext } from './I18nProvider';
+import { I18nContextProps } from './types';
 
-export const useI18n = () => {
+export const useI18n = (): I18nContextProps => {
   const context = useContext(I18nContext);
 
   if (!context) {

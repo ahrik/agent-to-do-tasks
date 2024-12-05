@@ -9,6 +9,7 @@ import eslintReact from 'eslint-plugin-react';
 import eslintReactHooks from 'eslint-plugin-react-hooks';
 import eslintReactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import testingLibraryPlugin from 'eslint-plugin-testing-library';
 import globals from 'globals';
 import tsEslint from 'typescript-eslint';
 
@@ -20,15 +21,16 @@ export default tsEslint.config(
   {
     plugins: {
       '@typescript-eslint': tsEslint.plugin,
-      react: eslintReact,
-      jest: jestPlugin,
+      'jsx-a11y': jsxA11yPlugin,
       'react-hooks': eslintReactHooks,
       'react-refresh': eslintReactRefresh,
-      prettier: eslintPrettier,
-      'jsx-a11y': jsxA11yPlugin,
-      jsdoc: jsdocPlugin,
       'simple-import-sort': simpleImportSort,
+      'testing-library': testingLibraryPlugin,
       import: importPlugin,
+      jest: jestPlugin,
+      jsdoc: jsdocPlugin,
+      prettier: eslintPrettier,
+      react: eslintReact,
     },
   },
 

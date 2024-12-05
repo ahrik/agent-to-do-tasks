@@ -1,8 +1,10 @@
+import { useI18n } from '@shared/i18n';
 import { Button } from '@shared/ui/Button';
 import { useSignOut } from '../model/useSignOut';
 
 export function SignOutButton({ className }: { className?: string }) {
   const { signOut, isLoading } = useSignOut();
+  const { t } = useI18n();
 
   const handleClick = () => {
     signOut();
@@ -10,7 +12,7 @@ export function SignOutButton({ className }: { className?: string }) {
 
   return (
     <Button loading={isLoading} className={className} onClick={handleClick}>
-      Выход
+      {t('sign-out')}
     </Button>
   );
 }

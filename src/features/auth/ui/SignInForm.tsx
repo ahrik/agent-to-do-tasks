@@ -32,14 +32,14 @@ export function SignInForm({ className }: Props) {
 
   const { signIn, isLoading, error } = useSignIn();
 
-  const handleSubmitSignIn = (formData: FormFields) => {
+  const handleSignInSubmit = (formData: FormFields) => {
     signIn(formData);
   };
 
   const inProgress = isLoading || isSubmitting;
 
   return (
-    <FormProvider<FormFields> methods={methods} onSubmit={handleSubmitSignIn} className={className}>
+    <FormProvider<FormFields> methods={methods} onSubmit={handleSignInSubmit} className={className}>
       <RHFInput
         label="Email"
         name="email"

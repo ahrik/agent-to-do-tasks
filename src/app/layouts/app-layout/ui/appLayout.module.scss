@@ -4,4 +4,8 @@
   @include mixins.full-layout();
 
   overflow: hidden;
+
+  &--has-nav {
+    margin: 20px
+  }
 }

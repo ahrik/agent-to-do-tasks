@@ -10,6 +10,10 @@ const getPath = (relativePath: string) => path.resolve(__dirname, relativePath);
 export default defineConfig({
   plugins: [react(), eslint(), svgr()],
 
+  css: {
+    postcss: './postcss.config.сjs',
+  },
+
   resolve: {
     alias: {
       '@': getPath('./src'),

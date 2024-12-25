@@ -10,9 +10,9 @@ type Props = {
 
 export const Logo = ({ hideText }: Props) => (
   <div className={clsx(styles.logo, hideText && styles.logoHidedText)}>
-    <div className={clsx(styles.logo__icon)}>
+    <div className={clsx(styles.logoIcon)}>
       <LogoIcon />
     </div>
-    {!hideText && <div className={clsx(styles.logo__text)}>Taskly</div>}
+    {!hideText && <div className={clsx(styles.logoText)}>Taskly</div>}
   </div>
 );

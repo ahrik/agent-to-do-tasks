@@ -11,5 +11,13 @@
     margin: 0 auto;
     width: var(--container-max-width);
     padding: 24px 0;
+
+    &--as {
+      padding: 24px 0;
+    }
+
+    &-ad {
+      margin: 10px;
+    }
   }
 }

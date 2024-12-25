@@ -6,15 +6,15 @@ import styles from './header.module.scss';
 
 export const Header = () => {
   return (
-    <div className={clsx(styles.header__wrapper)}>
+    <div className={clsx(styles.headerWrapper)}>
       <header className={clsx(styles.header)}>
-        <div className={clsx(styles.header__logo)}>
+        <div className={clsx(styles.headerLogo)}>
           <Logo />
         </div>
 
-        <div className={clsx(styles.header__nav)}>Nav</div>
+        <div className={clsx(styles.headerNav)}>Nav</div>
 
-        <div className={clsx(styles.header__actions)}>
+        <div className={clsx(styles.headerActions)}>
           <SignOutButton />
         </div>
       </header>

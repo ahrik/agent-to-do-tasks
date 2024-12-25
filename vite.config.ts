@@ -10,9 +10,16 @@ const getPath = (relativePath: string) => path.resolve(__dirname, relativePath);
 export default defineConfig({
   plugins: [react(), eslint(), svgr()],
 
-  css: {
-    postcss: './postcss.config.сjs',
-  },
+  // css: {
+  //   modules: {
+  //     // Благодаря этому Vite сконвертирует .appLayout__header → appLayoutHeader
+  //     // и .appLayout--has-nav → appLayoutHasNav
+  //     localsConvention: 'camelCaseOnly',
+  //   },
+  //   preprocessorOptions: {
+  //     scss: {},
+  //   },
+  // },
 
   resolve: {
     alias: {
